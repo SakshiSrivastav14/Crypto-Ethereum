@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Portfolio Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">₿</div>
+                    <h1>CryptoTracker</h1>
+                </div>
+                <div class="portfolio-value">
+                    <span class="label">Total Portfolio Value</span>
+                    <span class="value" id="totalValue">$0.00</span>
+                    <span class="change" id="totalChange">+0.00%</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Add Crypto Form -->
+        <section class="add-crypto-section">
+            <div class="card">
+                <h2>Add Cryptocurrency</h2>
+                <form id="addCryptoForm" class="add-crypto-form">
+                    <div class="form-group">
+                        <label for="cryptoSelect">Cryptocurrency</label>
+                        <select id="cryptoSelect" required>
+                            <option value="">Select a cryptocurrency</option>
+                            <option value="bitcoin">Bitcoin (BTC)</option>
+                            <option value="ethereum">Ethereum (ETH)</option>
+                            <option value="cardano">Cardano (ADA)</option>
+                            <option value="polkadot">Polkadot (DOT)</option>
+                            <option value="chainlink">Chainlink (LINK)</option>
+                            <option value="litecoin">Litecoin (LTC)</option>
+                            <option value="stellar">Stellar (XLM)</option>
+                            <option value="dogecoin">Dogecoin (DOGE)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" step="0.00000001" min="0" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchasePrice">Purchase Price (USD)</label>
+                        <input type="number" id="purchasePrice" step="0.01" min="0" placeholder="0.00" required>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-text">Add to Portfolio</span>
+                        <span class="btn-icon">+</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Portfolio Holdings -->
+        <section class="portfolio-section">
+            <div class="section-header">
+                <h2>Your Holdings</h2>
+                <button id="refreshBtn" class="btn-secondary">
+                    <span class="refresh-icon">↻</span>
+                    Refresh Prices
+                </button>
+            </div>
+            
+            <div id="portfolioGrid" class="portfolio-grid">
+                <!-- Portfolio items will be dynamically added here -->
+            </div>
+            
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">📊</div>
+                <h3>No cryptocurrencies in your portfolio</h3>
+                <p>Add your first cryptocurrency above to start tracking your portfolio</p>
+            </div>
+        </section>
+
+        <!-- Market Overview -->
+        <section class="market-section">
+            <div class="card">
+                <h2>Market Overview</h2>
+                <div id="marketData" class="market-grid">
+                    <!-- Market data will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Fetching latest prices...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
